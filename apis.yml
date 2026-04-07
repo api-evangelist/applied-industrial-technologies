@@ -1,7 +1,12 @@
 aid: applied-industrial-technologies
-url: https://raw.githubusercontent.com/api-evangelist/applied-industrial-technologies/refs/heads/main/apis.yml
+url: 
+  https://raw.githubusercontent.com/api-evangelist/applied-industrial-technologies/refs/heads/main/apis.yml
 modified: '2026-03-23'
 apis: []
 common:
   - type: Website
     url: https://www.applied-industrial-technologies.com
+description: >-
+  Applied Industrial Technologies is an industrial distributor of bearings, power
+  transmission products, fluid power components, industrial rubber products, linear
+  motion components, tools, and related supplies.
