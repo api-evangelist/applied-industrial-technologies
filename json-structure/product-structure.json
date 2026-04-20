@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/applied-industrial-technologies/main/json-structure/product-structure.json",
+  "title": "Product",
+  "description": "An industrial product distributed by Applied Industrial Technologies",
+  "type": "record",
+  "fields": [
+    {
+      "name": "productId",
+      "type": "string",
+      "description": "Unique product identifier"
+    },
+    {
+      "name": "partNumber",
+      "type": "string",
+      "description": "Manufacturer part number"
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "description": "Product name"
+    },
+    {
+      "name": "description",
+      "type": "string",
+      "description": "Product description"
+    },
+    {
+      "name": "category",
+      "type": "string",
+      "description": "Product category"
+    },
+    {
+      "name": "manufacturer",
+      "type": "string",
+      "description": "Product manufacturer"
+    },
+    {
+      "name": "price",
+      "type": "float64",
+      "description": "Unit price in USD"
+    },
+    {
+      "name": "inStock",
+      "type": "boolean",
+      "description": "Whether the product is in stock"
+    },
+    {
+      "name": "leadTimeDays",
+      "type": "int32",
+      "description": "Lead time in days if not in stock"
+    }
+  ]
+}

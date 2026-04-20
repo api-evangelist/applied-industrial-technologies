@@ -1,0 +1,20 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "ait": "https://www.applied-industrial-technologies.com/vocab#",
+    "productId": "schema:identifier",
+    "partNumber": "schema:gtin",
+    "name": "schema:name",
+    "description": "schema:description",
+    "category": "schema:category",
+    "manufacturer": "schema:manufacturer",
+    "price": "schema:price",
+    "inStock": "schema:availability",
+    "leadTimeDays": "ait:leadTimeDays",
+    "orderId": "schema:identifier",
+    "status": "schema:orderStatus",
+    "totalAmount": "schema:totalPrice",
+    "createdAt": "schema:orderDate"
+  }
+}

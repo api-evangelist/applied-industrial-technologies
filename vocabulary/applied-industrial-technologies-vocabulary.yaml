@@ -1,0 +1,111 @@
+vocabulary: "1.0.0"
+
+info:
+  provider: Applied Industrial Technologies
+  description: >-
+    Vocabulary for the Applied Industrial Technologies industrial distribution platform,
+    covering product catalog browsing, purchase order management, and supply chain
+    operations for industrial components including bearings and power transmission.
+  created: "2026-04-19"
+  modified: "2026-04-19"
+
+operational:
+  apis:
+    - name: Applied Industrial Technologies API
+      namespace: ait
+      version: "1.0.0"
+      baseUrl: "https://api.applied-industrial-technologies.com/v1"
+      status: active
+
+  resources:
+    - name: products
+      description: Industrial products in the distribution catalog
+      api: Applied Industrial Technologies API
+      actions:
+        - list
+        - get
+    - name: orders
+      description: Purchase orders for industrial products
+      api: Applied Industrial Technologies API
+      actions:
+        - list
+        - create
+        - get
+
+  actions:
+    - name: list
+      httpMethod: GET
+      pattern: read
+    - name: get
+      httpMethod: GET
+      pattern: read
+    - name: create
+      httpMethod: POST
+      pattern: write
+
+  schemas:
+    core:
+      - name: Product
+        description: Industrial product with part number, category, and pricing
+      - name: Order
+        description: Purchase order with line items and shipping address
+      - name: OrderRequest
+        description: Request payload for creating a new purchase order
+
+  parameters:
+    identifiers:
+      - name: productId
+        description: Unique product identifier
+      - name: orderId
+        description: Unique order identifier
+    filters:
+      - name: category
+        description: Product category filter
+      - name: manufacturer
+        description: Manufacturer name filter
+
+  enums:
+    productCategories:
+      - Bearings
+      - Power Transmission
+      - Fluid Power
+      - Industrial Rubber
+      - Linear Motion
+      - Tools
+      - Safety
+    orderStatuses:
+      - pending
+      - processing
+      - shipped
+      - delivered
+      - cancelled
+
+  authentication:
+    schemes:
+      - type: bearer
+        description: Bearer token authentication for API access
+
+capability:
+  workflows:
+    - name: Industrial Procurement
+      description: End-to-end workflow for sourcing and ordering industrial components
+      resources:
+        - products
+        - orders
+  personas:
+    - name: Procurement Manager
+      description: Manages industrial component sourcing and purchase orders
+    - name: Maintenance Technician
+      description: Sources replacement parts and components for equipment maintenance
+  domains:
+    - name: Product Catalog
+      description: Browsing and searching the industrial product catalog
+      resources:
+        - products
+    - name: Order Management
+      description: Creating and tracking purchase orders
+      resources:
+        - orders
+
+  namespaces: []
+  binds: []

@@ -1,0 +1,77 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: Applied Industrial Technologies Procurement
+  description: >-
+    Workflow capability for industrial product procurement using the Applied Industrial
+    Technologies catalog. Combines product search and order management for procurement
+    teams sourcing bearings, power transmission, and fluid power components.
+  tags:
+    - Applied Industrial Technologies
+    - Industrial Distribution
+    - Procurement
+    - Supply Chain
+  created: "2026-04-19"
+  modified: "2026-04-19"
+
+binds:
+  - namespace: env
+    keys:
+      AIT_API_TOKEN: AIT_API_TOKEN
+
+capability:
+  consumes:
+    - import: ait
+      location: ./shared/applied-industrial-technologies-api.yaml
+
+  exposes:
+    - type: mcp
+      port: 9090
+      namespace: industrial-procurement-mcp
+      transport: http
+      description: MCP server for AI-assisted industrial procurement workflows.
+      tools:
+        - name: search-products
+          description: Searches the Applied Industrial Technologies product catalog by category or manufacturer
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "ait.list-products"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: get-product-details
+          description: Gets detailed specifications for a specific industrial product
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "ait.get-product"
+          with:
+            productId: "tools.productId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: place-order
+          description: Places a purchase order for industrial products with shipping address
+          hints:
+            readOnly: false
+            destructive: false
+          call: "ait.create-order"
+          with:
+            items: "tools.items"
+            shippingAddress: "tools.shippingAddress"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: list-orders
+          description: Lists existing purchase orders for the authenticated account
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "ait.list-orders"
+          outputParameters:
+            - type: object
+              mapping: "$."
