@@ -34,6 +34,8 @@ apis:
       type: Vocabulary
     description: API for browsing the Applied Industrial Technologies product catalog of bearings, power transmission, fluid power, and industrial rubber products, and managing purchase orders.
 common:
+  - type: Authentication
+    url: authentication/applied-industrial-technologies-authentication.yml
   - type: LinkedIn
     url: https://www.linkedin.com/company/appliedindustrialtechnologies-
   - type: Website
