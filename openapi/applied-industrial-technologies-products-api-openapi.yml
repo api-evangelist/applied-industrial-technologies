@@ -1,0 +1,165 @@
+openapi: 3.0.3
+info:
+  title: Applied Industrial Technologies Product Catalog Orders Products API
+  description: API for accessing the Applied Industrial Technologies product catalog, including bearings, power transmission components, fluid power products, industrial rubber, linear motion, and related industrial supplies.
+  version: 1.0.0
+  contact:
+    name: Applied Industrial Technologies
+    url: https://www.applied-industrial-technologies.com
+  license:
+    name: Proprietary
+servers:
+- url: https://api.applied-industrial-technologies.com/v1
+  description: Applied Industrial Technologies API
+security:
+- bearerAuth: []
+tags:
+- name: Products
+  description: Industrial product catalog operations
+paths:
+  /products:
+    get:
+      operationId: listProducts
+      summary: Applied Industrial Technologies - List Products
+      description: Returns a paginated list of industrial products from the catalog
+      tags:
+      - Products
+      parameters:
+      - name: category
+        in: query
+        description: Filter by product category (bearings, power-transmission, fluid-power)
+        schema:
+          type: string
+      - name: manufacturer
+        in: query
+        description: Filter by manufacturer name
+        schema:
+          type: string
+      - name: inStock
+        in: query
+        description: Filter to only in-stock products
+        schema:
+          type: boolean
+      - name: page
+        in: query
+        description: Page number for pagination
+        schema:
+          type: integer
+          default: 1
+      - name: limit
+        in: query
+        description: Number of results per page
+        schema:
+          type: integer
+          default: 20
+      responses:
+        '200':
+          description: A list of products
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Product'
+                  total:
+                    type: integer
+                  page:
+                    type: integer
+              examples:
+                ListProductsExample:
+                  x-microcks-default: true
+                  summary: Example product list response
+                  value:
+                    data:
+                    - productId: AIT-BRG-6205
+                      partNumber: 6205-2RS
+                      name: Deep Groove Ball Bearing 6205-2RS
+                      category: Bearings
+                      manufacturer: SKF
+                      price: 12.5
+                      inStock: true
+                    total: 1
+                    page: 1
+        '401':
+          description: Unauthorized - invalid or missing authentication token
+  /products/{productId}:
+    get:
+      operationId: getProduct
+      summary: Applied Industrial Technologies - Get Product
+      description: Returns details for a specific product by its identifier
+      tags:
+      - Products
+      parameters:
+      - name: productId
+        in: path
+        required: true
+        description: Unique product identifier
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Product details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+              examples:
+                GetProductExample:
+                  x-microcks-default: true
+                  summary: Example product detail response
+                  value:
+                    productId: AIT-BRG-6205
+                    partNumber: 6205-2RS
+                    name: Deep Groove Ball Bearing 6205-2RS
+                    description: Single row deep groove ball bearing with rubber seals on both sides
+                    category: Bearings
+                    manufacturer: SKF
+                    price: 12.5
+                    inStock: true
+                    leadTimeDays: 0
+        '404':
+          description: Product not found
+        '401':
+          description: Unauthorized - invalid or missing authentication token
+components:
+  schemas:
+    Product:
+      title: Product
+      description: An industrial product in the Applied Industrial Technologies catalog
+      type: object
+      properties:
+        productId:
+          type: string
+          description: Unique product identifier
+        partNumber:
+          type: string
+          description: Manufacturer part number
+        name:
+          type: string
+          description: Product name
+        description:
+          type: string
+          description: Detailed product description
+        category:
+          type: string
+          description: Product category
+        manufacturer:
+          type: string
+          description: Product manufacturer
+        price:
+          type: number
+          description: Unit price in USD
+        inStock:
+          type: boolean
+          description: Whether the product is currently in stock
+        leadTimeDays:
+          type: integer
+          description: Estimated lead time in days when not in stock
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

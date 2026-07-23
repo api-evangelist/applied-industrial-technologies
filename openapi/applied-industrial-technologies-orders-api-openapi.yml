@@ -1,0 +1,150 @@
+openapi: 3.0.3
+info:
+  title: Applied Industrial Technologies Product Catalog Orders API
+  description: API for accessing the Applied Industrial Technologies product catalog, including bearings, power transmission components, fluid power products, industrial rubber, linear motion, and related industrial supplies.
+  version: 1.0.0
+  contact:
+    name: Applied Industrial Technologies
+    url: https://www.applied-industrial-technologies.com
+  license:
+    name: Proprietary
+servers:
+- url: https://api.applied-industrial-technologies.com/v1
+  description: Applied Industrial Technologies API
+security:
+- bearerAuth: []
+tags:
+- name: Orders
+  description: Purchase order management
+paths:
+  /orders:
+    get:
+      operationId: listOrders
+      summary: Applied Industrial Technologies - List Orders
+      description: Returns a list of purchase orders for the authenticated account
+      tags:
+      - Orders
+      responses:
+        '200':
+          description: A list of orders
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Order'
+              examples:
+                ListOrdersExample:
+                  x-microcks-default: true
+                  summary: Example orders list response
+                  value:
+                    data:
+                    - orderId: ORD-2026-0001
+                      status: shipped
+                      totalAmount: 125.0
+                      createdAt: '2026-04-01T10:00:00Z'
+        '401':
+          description: Unauthorized - invalid or missing authentication token
+    post:
+      operationId: createOrder
+      summary: Applied Industrial Technologies - Create Order
+      description: Creates a new purchase order for industrial products
+      tags:
+      - Orders
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderRequest'
+            examples:
+              CreateOrderExample:
+                x-microcks-default: true
+                summary: Example order creation request
+                value:
+                  items:
+                  - productId: AIT-BRG-6205
+                    quantity: 10
+                  shippingAddress:
+                    street: 1 Applied Way
+                    city: Cleveland
+                    state: OH
+                    zip: '44114'
+      responses:
+        '201':
+          description: Order created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+        '400':
+          description: Invalid request body
+        '401':
+          description: Unauthorized - invalid or missing authentication token
+components:
+  schemas:
+    OrderRequest:
+      title: OrderRequest
+      description: Request body for creating a new purchase order
+      type: object
+      properties:
+        items:
+          type: array
+          description: Line items in the order
+          items:
+            type: object
+            properties:
+              productId:
+                type: string
+                description: Product identifier
+              quantity:
+                type: integer
+                description: Quantity to order
+        shippingAddress:
+          type: object
+          description: Shipping destination address
+          properties:
+            street:
+              type: string
+              description: Street address
+            city:
+              type: string
+              description: City
+            state:
+              type: string
+              description: State abbreviation
+            zip:
+              type: string
+              description: ZIP code
+    Order:
+      title: Order
+      description: A purchase order for industrial products
+      type: object
+      properties:
+        orderId:
+          type: string
+          description: Unique order identifier
+        status:
+          type: string
+          enum:
+          - pending
+          - processing
+          - shipped
+          - delivered
+          - cancelled
+          description: Current order status
+        totalAmount:
+          type: number
+          description: Total order amount in USD
+        createdAt:
+          type: string
+          format: date-time
+          description: Order creation timestamp
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
