@@ -1,0 +1,16 @@
+{
+  "provider": "applied-industrial-technologies",
+  "sources": [
+    "applied-industrial-technologies-orders-api-openapi.yml",
+    "applied-industrial-technologies-products-api-openapi.yml"
+  ],
+  "outputs": [
+    "applied-industrial-technologies-orders-api-openapi.yml",
+    "applied-industrial-technologies-products-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
