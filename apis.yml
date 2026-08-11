@@ -36,10 +36,6 @@ apis:
     url: json-ld/applied-industrial-technologies-context.jsonld
   - type: SpectralRules
     url: rules/applied-industrial-technologies-spectral-rules.yml
-  - type: X-NaftikoCapability
-    url: capabilities/shared/applied-industrial-technologies-api.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/industrial-procurement.yaml
   - type: Vocabulary
     url: vocabulary/applied-industrial-technologies-vocabulary.yaml
 - aid: applied-industrial-technologies:applied-industrial-technologies-products-api
@@ -63,10 +59,6 @@ apis:
     url: json-ld/applied-industrial-technologies-context.jsonld
   - type: SpectralRules
     url: rules/applied-industrial-technologies-spectral-rules.yml
-  - type: X-NaftikoCapability
-    url: capabilities/shared/applied-industrial-technologies-api.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/industrial-procurement.yaml
   - type: Vocabulary
     url: vocabulary/applied-industrial-technologies-vocabulary.yaml
 common:
