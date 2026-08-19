@@ -1,0 +1,86 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Applied Industrial Technologies Product Catalog Orders Products API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Products",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Applied Industrial Technologies - List Products",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.applied-industrial-technologies.com/v1/products",
+            "params": [
+              {
+                "name": "category",
+                "value": "",
+                "type": "query",
+                "description": "Filter by product category (bearings, power-transmission, fluid-power)"
+              },
+              {
+                "name": "manufacturer",
+                "value": "",
+                "type": "query",
+                "description": "Filter by manufacturer name"
+              },
+              {
+                "name": "inStock",
+                "value": "",
+                "type": "query",
+                "description": "Filter to only in-stock products"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number for pagination"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results per page"
+              }
+            ]
+          },
+          "docs": "Returns a paginated list of industrial products from the catalog"
+        },
+        {
+          "info": {
+            "name": "Applied Industrial Technologies - Get Product",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.applied-industrial-technologies.com/v1/products/:productId",
+            "params": [
+              {
+                "name": "productId",
+                "value": "",
+                "type": "path",
+                "description": "Unique product identifier"
+              }
+            ]
+          },
+          "docs": "Returns details for a specific product by its identifier"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
