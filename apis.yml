@@ -21,6 +21,8 @@ apis:
   description: Purchase order management
   humanURL: https://www.applied-industrial-technologies.com
   tags:
+  - Order
+  tags_raw:
   - Orders
   properties:
   - type: OpenAPI
@@ -44,6 +46,8 @@ apis:
   description: Industrial product catalog operations
   humanURL: https://www.applied-industrial-technologies.com
   tags:
+  - Product
+  tags_raw:
   - Products
   properties:
   - type: OpenAPI
