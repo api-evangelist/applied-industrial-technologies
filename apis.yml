@@ -78,6 +78,9 @@ apis:
   - type: Vocabulary
     url: vocabulary/applied-industrial-technologies-vocabulary.yaml
 common:
+  - type: CapabilityMap
+    url: capabilities/applied-industrial-technologies-capability-edges.yml
+    name: Applied Industrial Technologies Business Capability Map
   - type: AgenticAccess
     url: agentic-access/applied-industrial-technologies-agentic-access.yml
   - type: Authentication
