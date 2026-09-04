@@ -19,18 +19,18 @@ accessModel:
   try_now: true
   public: false
   label: Freemium · Self-serve signup
-  confidence: high
+  confidence: medium
   source:
   - plans
   - authentication
-  generated: '2026-07-22'
+  generated: '2026-09-03'
   method: derived
 modified: '2026-04-19'
 apis:
 - aid: applied-industrial-technologies:applied-industrial-technologies-orders-api
   name: Applied Industrial Technologies Orders API
   description: Purchase order management
-  humanURL: https://www.applied-industrial-technologies.com
+  humanURL: https://www.applied.com
   tags:
   - Order
   tags_raw:
@@ -39,7 +39,7 @@ apis:
   - type: OpenAPI
     url: openapi/applied-industrial-technologies-orders-api-openapi.yml
   - type: Website
-    url: https://www.applied-industrial-technologies.com
+    url: https://www.applied.com
   - type: JSONSchema
     url: json-schema/product-schema.json
   - type: JSONStructure
@@ -55,7 +55,7 @@ apis:
 - aid: applied-industrial-technologies:applied-industrial-technologies-products-api
   name: Applied Industrial Technologies Products API
   description: Industrial product catalog operations
-  humanURL: https://www.applied-industrial-technologies.com
+  humanURL: https://www.applied.com
   tags:
   - Product
   tags_raw:
@@ -64,7 +64,7 @@ apis:
   - type: OpenAPI
     url: openapi/applied-industrial-technologies-products-api-openapi.yml
   - type: Website
-    url: https://www.applied-industrial-technologies.com
+    url: https://www.applied.com
   - type: JSONSchema
     url: json-schema/product-schema.json
   - type: JSONStructure
@@ -78,6 +78,8 @@ apis:
   - type: Vocabulary
     url: vocabulary/applied-industrial-technologies-vocabulary.yaml
 common:
+  - type: DomainSecurity
+    url: security/applied-industrial-technologies-domain-security.yml
   - type: CapabilityMap
     url: capabilities/applied-industrial-technologies-capability-edges.yml
     name: Applied Industrial Technologies Business Capability Map
@@ -88,12 +90,23 @@ common:
   - type: LinkedIn
     url: https://www.linkedin.com/company/appliedindustrialtechnologies-
   - type: Website
-    url: https://www.applied-industrial-technologies.com
+    url: https://www.applied.com
 description: >-
-  Applied Industrial Technologies is an industrial distributor of bearings, power
-  transmission products, fluid power components, industrial rubber products, linear
-  motion components, tools, and related supplies.
+  Applied Industrial Technologies, Inc. (NYSE: AIT) is a Cleveland, Ohio industrial
+  distributor and technical solutions provider, founded in 1923, serving MRO and OEM
+  customers across North America, Australia, New Zealand and Singapore. It distributes
+  bearings, power transmission products, fluid power components, industrial rubber
+  products, linear motion components, specialty flow control, tools and related
+  supplies, and operates engineered fluid power and automation businesses alongside
+  its distribution network. Its customer-facing storefront is applied.com, an SAP
+  Commerce site; the company runs an Azure API Management gateway at api.applied.com
+  but publishes no public developer program, API reference or machine-readable contract.
 name: Applied Industrial Technologies
+created: '2026-05-03'
+maintainers:
+  - FN: API Evangelist
+    email: info@apievangelist.com
+    url: https://apievangelist.com
 tags:
   - Industrial Distribution
   - Bearings
@@ -104,3 +117,31 @@ tags:
 type: Index
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/applied-industrial-technologies.png
 access: 3rd-Party
+x-enrichment:
+  date: '2026-09-04'
+  status: minimal
+  artifacts_added: 3
+  pass: local-v3
+x-coverage:
+  state: gated
+  reason: customer-only-docs
+  detail: >-
+    Applied Industrial Technologies runs a live Azure API Management gateway at
+    api.applied.com — it answers every request with a 54-byte JSON 404 and an Azure
+    Request-Context header — but publishes no developer portal, no API reference and
+    no discovery document, so its integration surface is reachable only through an
+    account team and a signed customer agreement.
+  evidence:
+    - url: https://api.applied.com/
+      status: 404
+    - url: https://api.applied.com/openapi.json
+      status: 404
+    - url: https://www.applied.com/llms.txt
+      status: 404
+    - url: https://www.applied.com/developers
+      status: 403
+    - url: https://www.applied.com/.well-known/security.txt
+      status: 404
+    - url: https://api.applied-industrial-technologies.com/
+      status: 0
+  checked: '2026-09-04'
