@@ -1,0 +1,45 @@
+generated: '2026-09-04'
+method: searched
+source: >-
+  Unauthenticated searches of registry.npmjs.org, pypi.org, Packagist, crates.io,
+  RubyGems, NuGet and search.maven.org for a first-party Applied Industrial
+  Technologies client library, plus a GitHub org/repo search (github.com/applied-industrial-technologies
+  returns 404) and a review of applied.com for a documented SDK or download.
+package_count: 0
+official_package_count: 0
+packages: []
+note: >-
+  No first-party SDK, client library or CLI exists in any public package registry.
+  Applied Industrial Technologies is an industrial distributor with no public
+  developer program: there is no developer portal, no published API reference, and
+  no company GitHub organization, so there is nothing for a client library to wrap.
+  A live Azure API Management gateway does answer at api.applied.com, but it exposes
+  no public operations and is not accompanied by a published SDK.
+  Recorded as a checked zero, not an unchecked gap.
+registries_checked:
+  - registry: npm
+    endpoint: https://registry.npmjs.org/-/v1/search?text=applied%20industrial%20technologies
+    result: no first-party package
+  - registry: pypi
+    endpoint: https://pypi.org/pypi/applied-industrial-technologies/json
+    status: 404
+    result: no first-party package
+  - registry: packagist
+    endpoint: https://packagist.org/search.json?q=applied%20industrial
+    result: no first-party package
+  - registry: crates.io
+    endpoint: https://crates.io/api/v1/crates?q=applied%20industrial
+    result: no first-party package
+  - registry: rubygems
+    endpoint: https://rubygems.org/api/v1/search.json?query=applied+industrial
+    result: no first-party package
+  - registry: nuget
+    endpoint: https://azuresearch-usnc.nuget.org/query?q=applied+industrial+technologies
+    result: no first-party package
+  - registry: maven-central
+    endpoint: https://search.maven.org/solrsearch/select?q=applied+industrial
+    result: query timed out; no first-party package found via any other surface
+  - registry: github
+    endpoint: https://api.github.com/orgs/applied-industrial-technologies
+    status: 404
+    result: no company GitHub organization

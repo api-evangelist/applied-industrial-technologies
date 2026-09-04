@@ -1,6 +1,13 @@
 generated: '2026-07-11'
 method: derived
 source: openapi/applied-industrial-technologies-openapi.yaml
+x-apievangelist-note: >-
+  UNVERIFIED SOURCE (recorded 2026-09-04). This artifact is derived from the OpenAPI
+  files in openapi/, which are API Evangelist bulk-sweep SCAFFOLDS, not contracts
+  harvested from Applied Industrial Technologies. Their servers[] host
+  api.applied-industrial-technologies.com does not resolve (NXDOMAIN). Everything
+  below therefore describes an unverified contract and must not be read as a claim
+  about what the provider actually ships. See x-coverage in apis.yml.
 summary:
   types:
   - http

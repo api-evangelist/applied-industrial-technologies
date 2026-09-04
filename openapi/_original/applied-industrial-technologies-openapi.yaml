@@ -11,6 +11,19 @@ info:
     url: https://www.applied-industrial-technologies.com
   license:
     name: Proprietary
+  x-generated-from: documentation
+  x-apievangelist-provenance: >-
+    SCAFFOLD — NOT HARVESTED FROM THE PROVIDER. This document was authored by an API
+    Evangelist bulk sweep, not fetched from Applied Industrial Technologies. Verified
+    2026-09-04: the servers[] host api.applied-industrial-technologies.com does not
+    resolve (NXDOMAIN), and neither does the registrable domain
+    applied-industrial-technologies.com used in info.contact.url — the company's real
+    domain is applied.com. Applied Industrial Technologies publishes no API reference,
+    no developer portal and no machine-readable contract; its live Azure API Management
+    gateway at api.applied.com exposes no public operations. Treat every operation,
+    path, parameter and schema below as unverified. Do not derive further artifacts
+    from it. See x-coverage in apis.yml.
+  x-apievangelist-verified: false
 servers:
   - url: https://api.applied-industrial-technologies.com/v1
     description: Applied Industrial Technologies API

@@ -1,0 +1,110 @@
+generated: '2026-09-04'
+method: probed
+source: >-
+  Live anonymous GET of the RFC 8615 /.well-known/ paths against every host this
+  record knows — the registrable domain and www, the corporate investor host, the
+  live Azure API Management gateway at api.applied.com, and the api host named in
+  the repo's OpenAPI servers[] block.
+note: >-
+  NOTHING WAS SERVED. Applied Industrial Technologies publishes no security.txt, no
+  OIDC/OAuth discovery document, no api-catalog and no ai-plugin manifest on any host
+  probed. No WellKnown or SecurityTxt pointer is emitted, because a recorded absence
+  is data and must not read as a presence. Two host-level caveats are recorded below:
+  www.applied.com/applied.com answer some /.well-known/ paths with a Cloudflare
+  managed-challenge interstitial (HTTP 403, "Just a moment...") rather than an origin
+  response, and ir.applied.com is a catch-all that answers HTTP 200 "Invalid key"
+  (11 bytes) for every path including the negative control, so every hit on that host
+  is discarded.
+hit_count: 0
+hosts:
+  - host: www.applied.com
+    soft_404_control:
+      path: /.well-known/applied-industrial-technologies-negative-control-7f3ab91c.json
+      status: 404
+      bytes: 132695
+      result: passed
+    note: >-
+      Origin answers 404 with the site's HTML 404 page for security.txt and
+      ai-plugin.json; the OIDC/OAuth/api-catalog paths were answered by a Cloudflare
+      managed-challenge interstitial (403), not by the origin, so those three are
+      unresolved rather than confirmed absent.
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 403
+      - path: /.well-known/oauth-authorization-server
+        status: 403
+      - path: /.well-known/api-catalog
+        status: 403
+      - path: /.well-known/ai-plugin.json
+        status: 404
+  - host: applied.com
+    soft_404_control:
+      path: /.well-known/applied-industrial-technologies-negative-control-7f3ab91c.json
+      status: 404
+      bytes: 132695
+      result: passed
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 403
+      - path: /.well-known/oauth-authorization-server
+        status: 403
+      - path: /.well-known/api-catalog
+        status: 403
+      - path: /.well-known/ai-plugin.json
+        status: 404
+  - host: api.applied.com
+    soft_404_control:
+      path: /.well-known/applied-industrial-technologies-negative-control-7f3ab91c.json
+      status: 404
+      bytes: 54
+      result: passed
+    note: >-
+      A real, live API gateway — every response is a 54-byte JSON body
+      '{ "statusCode": 404, "message": "Resource not found" }' with an Azure API
+      Management Request-Context header. The gateway exists and answers; it simply
+      publishes no discovery document at any /.well-known/ path.
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+  - host: ir.applied.com
+    path_echo_control: failed
+    soft_404_control:
+      path: /.well-known/applied-industrial-technologies-negative-control-7f3ab91c.json
+      status: 200
+      bytes: 11
+      result: failed
+    note: >-
+      Catch-all host. Returns HTTP 200 with an 11-byte body "Invalid key" for every
+      /.well-known/ path, including a control path that cannot exist. Every 200 on
+      this host is therefore discarded and none is recorded as a document.
+    documents: []
+  - host: api.applied-industrial-technologies.com
+    note: >-
+      Does not resolve (NXDOMAIN, probed 2026-09-04). This host is named in the
+      servers[] block of the OpenAPI files in openapi/, which are API Evangelist
+      bulk-sweep scaffolds, not contracts harvested from the provider. The registrable
+      domain applied-industrial-technologies.com does not exist; the company's real
+      domain is applied.com.
+    documents:
+      - path: /.well-known/security.txt
+        status: 0
+      - path: /.well-known/openid-configuration
+        status: 0
+      - path: /.well-known/oauth-authorization-server
+        status: 0
+      - path: /.well-known/api-catalog
+        status: 0
+      - path: /.well-known/ai-plugin.json
+        status: 0

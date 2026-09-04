@@ -3,88 +3,32 @@ specificationVersion: '0.1'
 schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
 provider: Applied Industrial Technologies
 providerId: applied-industrial-technologies
+generated: '2026-09-04'
 created: '2026-05-04'
-# Provenance stamped 2026-08-11: this artifact was written by the API Evangelist
-# bulk sweep dated 2026-05-04, not harvested from the provider. See roadmap#35.
-method: generated
-modified: '2026-05-04'
-tags:
-  - Industrial Distribution
-  - Bearings
-  - Power Transmission
-  - Fluid Power
-  - Supply Chain
-  - Rate Limiting
-  - Quotas
-  - Throttling
-description: Machine-readable rate limit definitions for the Applied Industrial Technologies API surface.
-  Captures per-tier quotas, burst behavior, response signaling, and recovery semantics. Defaults are scaffold
-  values to be replaced with published provider limits.
-headers:
-  limit: X-RateLimit-Limit
-  remaining: X-RateLimit-Remaining
-  reset: X-RateLimit-Reset
-  retryAfter: Retry-After
-  policy: RateLimit-Policy
-responseCodes:
-  throttled: 429
-  quotaExceeded: 429
-  serviceUnavailable: 503
-limits:
-  - tier: free
-    name: Free Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 10
-    burst: 20
-    timeFrame: minute
-    applies:
-      - Applied Industrial Technologies API
-  - tier: free
-    name: Free Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 1000
-    timeFrame: month
-    applies:
-      - Applied Industrial Technologies API
-  - tier: professional
-    name: Professional Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 100
-    burst: 200
-    timeFrame: minute
-    applies:
-      - Applied Industrial Technologies API
-  - tier: professional
-    name: Professional Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 100000
-    timeFrame: month
-    applies:
-      - Applied Industrial Technologies API
-  - tier: enterprise
-    name: Enterprise Negotiated Limit
-    scope: contract
-    metric: requests_per_minute
-    limit: 1000
-    burst: 5000
-    timeFrame: minute
-    applies:
-      - Applied Industrial Technologies API
-policies:
-  - name: Backoff Strategy
-    description: Clients should implement exponential backoff with jitter, honoring the Retry-After header
-      when present.
-  - name: Burst Handling
-    description: Short bursts above the steady-state limit are tolerated up to the documented burst ceiling
-      before throttling engages.
-  - name: Quota Reset
-    description: Monthly quotas reset at the start of each calendar month in UTC. Per-minute and per-second
-      windows reset on a sliding-window basis.
-  - name: Fair Use
-    description: Even on uncapped enterprise tiers, sustained usage that materially impacts shared infrastructure
-      may be subject to fair-use throttling.
-maintainers: []
+modified: '2026-09-04'
+method: searched
+source: https://www.applied.com/
+limit_count: 0
+limits: []
+headers: {}
+description: >-
+  Applied Industrial Technologies documents no API rate limits, no quota headers and
+  no throttling behaviour anywhere on its public surface. A checked zero.
+note: >-
+  UPGRADE OF A SCAFFOLD (2026-09-04). The previous version of this file was an API
+  Evangelist bulk-sweep scaffold dated 2026-05-04 that asserted X-RateLimit-Limit /
+  X-RateLimit-Remaining / X-RateLimit-Reset / RateLimit-Policy headers and a 429
+  response the provider has never published. Those values were invented and have been
+  removed. No rate-limit documentation exists: there is no developer portal and no API
+  reference. The live Azure API Management gateway at api.applied.com returns only a
+  54-byte JSON 404 on every probed path and emits no RateLimit-* or Retry-After header
+  on an anonymous request, so nothing could be observed at runtime either.
+evidence:
+  - url: https://api.applied.com/
+    status: 404
+    note: >-
+      Response headers observed 2026-09-04 — Date, Content-Type, Content-Length,
+      Connection, Request-Context. No RateLimit-*, X-RateLimit-* or Retry-After header.
+  - url: https://www.applied.com/developers
+    status: 403
+    note: Cloudflare managed challenge; no developer portal is linked from the site in any case.
