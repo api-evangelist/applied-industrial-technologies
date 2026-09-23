@@ -1,7 +1,9 @@
 ---
 title: Applied Industrial Technologies Q3 Earnings Call Highlights
 url: https://www.marketbeat.com/instant-alerts/applied-industrial-technologies-q3-earnings-call-highlights-2026-04-28/
-date: '2026-05-25'
+published: ''
+date_basis: harvested
+harvested: '2026-05-25'
 query: '"Applied Industrial Technologies" press release artificial intelligence'
 position: 3
 source: serpapi-google

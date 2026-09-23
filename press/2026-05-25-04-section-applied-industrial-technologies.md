@@ -1,7 +1,9 @@
 ---
 title: Section Applied Industrial Technologies
 url: https://www.mdpi.com/journal/applsci/sections/applied_industrial_technologies
-date: '2026-05-25'
+published: ''
+date_basis: harvested
+harvested: '2026-05-25'
 query: '"Applied Industrial Technologies" press release artificial intelligence'
 position: 4
 source: serpapi-google

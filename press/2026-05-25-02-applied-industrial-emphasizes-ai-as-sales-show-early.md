@@ -1,7 +1,9 @@
 ---
 title: Applied Industrial emphasizes AI as sales show early ...
 url: https://www.digitalcommerce360.com/2026/01/28/applied-industrial-ai-sales-q2-fy26/
-date: '2026-05-25'
+published: '2026-01-28'
+date_basis: url-derived
+harvested: '2026-05-25'
 query: '"Applied Industrial Technologies" press release artificial intelligence'
 position: 2
 source: serpapi-google

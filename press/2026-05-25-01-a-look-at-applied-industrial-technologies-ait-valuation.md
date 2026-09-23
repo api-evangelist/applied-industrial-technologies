@@ -1,7 +1,9 @@
 ---
 title: A Look At Applied Industrial Technologies (AIT) Valuation ...
 url: https://finance.yahoo.com/news/look-applied-industrial-technologies-ait-151001894.html
-date: '2026-05-25'
+published: ''
+date_basis: harvested
+harvested: '2026-05-25'
 query: '"Applied Industrial Technologies" press release artificial intelligence'
 position: 1
 source: serpapi-google

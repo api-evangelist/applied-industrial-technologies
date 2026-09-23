@@ -1,8 +1,7 @@
 {
   "provider": "applied-industrial-technologies",
   "sources": [
-    "applied-industrial-technologies-orders-api-openapi.yml",
-    "applied-industrial-technologies-products-api-openapi.yml"
+    "_original/applied-industrial-technologies-openapi.yaml"
   ],
   "outputs": [
     "applied-industrial-technologies-orders-api-openapi.yml",
@@ -12,9 +11,12 @@
   "errors": [],
   "warnings": [],
   "notes": [
-    "applied-industrial-technologies-orders-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "applied-industrial-technologies-products-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "applied-industrial-technologies-openapi.yaml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
     "apis.yml register: already-registered"
   ],
-  "skipped": []
+  "skipped": [
+    "applied-industrial-technologies-orders-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "applied-industrial-technologies-products-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
